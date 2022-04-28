@@ -39,3 +39,21 @@ def adiciona_em_ordem(nome, distancia, lista):
             if (distancia > lista[i][1]) and (distancia < lista[i+1][1]):
                 lista.insert(i+1, [nome, distancia])
     return lista
+
+#função que vereifica se esta dado pais esta na lista
+def esta_na_lista(p, l):
+    for i in l:
+        if p in i:
+            return True
+    return False
+
+#função que sorteia uma letra de uma palvra (desde que ela não esteja na lista restrita)
+def sorteia_letra(p, lr):
+    i = 0
+    while True:
+        if i == len(p) * 2:
+            return ''
+        s = random.choice(p.lower())
+        if s not in lr and s.isalpha():
+            break
+    return s
