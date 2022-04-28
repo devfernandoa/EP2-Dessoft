@@ -12,3 +12,10 @@ def normaliza(d):
             dr[a]['continente'] = x
     return dr
     
+#função que sorte um país entre a lista de países
+def sorteia_pais(nomes_de_paises):
+    paises = []
+    for i in nomes_de_paises:
+        paises.append(i)
+    pais = random.choice(paises)
+    return pais
