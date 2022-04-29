@@ -27,18 +27,21 @@ def haversine(r, p1, l1, p2, l2):
 
 #função que adiciona os países na lista com distâncias em ordem crescente
 def adiciona_em_ordem(nome, distancia, lista):
-    if lista == []:
+    if len(lista) == 0:
         return [[nome, distancia]]
     elif len(lista) == 1:
         if distancia > lista[0][1]:
             lista.append([nome, distancia])
         else:
             lista.insert(0, [nome, distancia])
+        return lista
     else:
         for i in range(len(lista)):
-            if (distancia > lista[i][1]) and (distancia < lista[i+1][1]):
-                lista.insert(i+1, [nome, distancia])
-    return lista
+            if nome == lista[i][0]:
+                return lista
+            elif distancia < lista[i][1]:
+                lista.insert(i, [nome, distancia])
+                return lista
 
 #função que vereifica se esta dado pais esta na lista
 def esta_na_lista(p, l):
