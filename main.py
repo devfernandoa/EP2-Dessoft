@@ -8,6 +8,8 @@ jogar_dnv = "sim"
 
 while jogar_dnv == "sim":
 
+    pais = f.sorteia_pais(base_dados_paises)
+
     tentativas = 20
     lista_chutes = []
     lista_paises = []
