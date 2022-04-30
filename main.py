@@ -13,6 +13,11 @@ while jogar_dnv == "sim":
 
     pais = f.sorteia_pais(base_dados_paises)
 
+    #declarando o pais sorteado e sua latitude e longitude
+    pais = f.sorteia_pais(base_dados_paises)
+    p1 = base_dados_paises[pais]['geo']['latitude']
+    l1 = base_dados_paises[pais]['geo']['longitude']
+
     tentativas = 20
     lista_chutes = []
     lista_paises = []
@@ -48,12 +53,36 @@ while jogar_dnv == "sim":
         #recebe um chute inválido
         elif chute not in base_dados_paises.keys():
             print('chute inválido')
+            continue
+        elif chute in lista_chutes:
+            print('você já chutou esse pais')
+            continue
+        lista_chutes.append(chute)
 
+        #declarando latitude e longitude do pais do chute
+        p2 = base_dados_paises[chute]['geo']['latitude']
+        l2 = base_dados_paises[chute]['geo']['longitude']
+
+        #calculando distancia entre os dois paises
+        d = round(f.haversine(raio, p1, l1, p2, l2))
         #recebe um chute válido errado
-        else:
+        if chute != pais:
             print('\n' + cor.vermelho + 'Você errou!\n' + cor.fim)
-            lista_chutes.append(chute)
 
+            #adiciona a tentativa a lista de tentativas
+            lista_paises = f.adiciona_em_ordem(chute, d, lista_paises)
+
+            #mostra a lista de paises e distâncias
+            print('distancias: ')
+            for i in lista_paises:
+                if i[1] > 10000:
+                    print(cor.roxo + 'pais -> ', i[0], '\ndistancia -> ', str(i[1]) + cor.fim)
+                elif i[1] > 5000:
+                    print(cor.vermelho + 'pais -> ', i[0], '\ndistancia -> ', str(i[1]) + cor.fim)
+                elif i[1] > 1000:
+                    print(cor.amarelo + 'pais -> ', i[0], '\ndistancia -> ', str(i[1]) + cor.fim)
+                elif i[1] > 0:
+                    print(cor.verde + 'pais -> ', i[0], '\ndistancia -> ', str(i[1]) + cor.fim)
             tentativas -= 1
     #pergunta se o jogador quer reiniciar o jogo
-    jogar_dnv = print((input("Você quer jogar de novo?")).lower)
+    jogar_dnv = input("Você quer jogar de novo?").lower()
