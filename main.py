@@ -82,11 +82,11 @@ while jogar_dnv == "Sim".lower():
 
         #recebe um chute válido errado
         elif chute != pais:
-            lista_chutes.append(chute)
             print('\n' + cor.vermelho + 'Você errou!\n' + cor.fim)
 
-            #adiciona a tentativa a lista de tentativas
+            #adiciona a tentativa à lista de tentativas
             lista_paises = f.adiciona_em_ordem(chute, d, lista_paises)
+            lista_chutes.append(chute)
 
             #mostra a lista de paises e distâncias
             print('Distâncias entre os chutes e o país sorteado: ')
@@ -100,6 +100,7 @@ while jogar_dnv == "Sim".lower():
                 elif i[1] > 0:
                     print(cor.verde + 'pais -> ', i[0], '\ndistancia -> ', str(i[1]) + cor.fim)
             tentativas -= 1
+            continue
 
     #finaliza o jogo quando acabam as tentativas
     print("Acabaram suas tentativas. Você perdeu! O país sorteado era " + pais)
