@@ -23,9 +23,6 @@ while jogar_dnv == "Sim".lower():
     lista_chutes = []
     lista_paises = []
 
-    #contador de dicas
-    dicas = 5
-
     #loop principal
     while tentativas > 0:
         print('\n' + cor.preto  + cor.negrito + 'Você tem {} tentativas'.format(tentativas) + cor.fim)
@@ -42,7 +39,6 @@ while jogar_dnv == "Sim".lower():
 
         #dá uma dica para o jogador
         if (chute == "Dica".lower()) and (dicas > 0):
-            dicas -= 1
             #adicionar código das dicas
             continue
 
