@@ -33,6 +33,13 @@ while jogar_dnv == "Sim".lower():
         #recebe o input do jogador
         chute = input('\n' + cor.preto  + cor.negrito + 'Qual seu chute? ' + cor.fim)
 
+        #declarando latitude e longitude do pais do chute para calcular distância desse país até o país sorteado
+        p2 = base_dados_paises[chute]['geo']['latitude']
+        l2 = base_dados_paises[chute]['geo']['longitude']
+
+        #calculando distância entre os dois paises
+        d = round(f.haversine(raio, p1, l1, p2, l2))
+
         #dá uma dica para o jogador
         if (chute == "Dica".lower()) and (dicas > 0):
             dicas -= 1
@@ -72,13 +79,6 @@ while jogar_dnv == "Sim".lower():
         elif chute in lista_chutes:
             print('você já chutou esse pais')
             continue
-
-        #declarando latitude e longitude do pais do chute para calcular distância desse país até o país sorteado
-        p2 = base_dados_paises[chute]['geo']['latitude']
-        l2 = base_dados_paises[chute]['geo']['longitude']
-
-        #calculando distância entre os dois paises
-        d = round(f.haversine(raio, p1, l1, p2, l2))
 
         #recebe um chute válido errado
         elif chute != pais:
