@@ -23,6 +23,9 @@ while jogar_dnv == "Sim".lower():
     lista_chutes = []
     lista_paises = []
 
+    #contador de dicas
+    dicas = 5
+
     #loop principal
     while tentativas > 0:
         print('\n' + cor.preto  + cor.negrito + 'Você tem {} tentativas'.format(tentativas) + cor.fim)
@@ -31,8 +34,13 @@ while jogar_dnv == "Sim".lower():
         chute = input('\n' + cor.preto  + cor.negrito + 'Qual seu chute? ' + cor.fim)
 
         #dá uma dica para o jogador
-        if chute == "Dica".lower():
+        if (chute == "Dica".lower()) and (dicas > 0):
+            dicas -= 1
             #adicionar código das dicas
+            continue
+
+        elif (chute == "Dica".lower()) and (dicas <= 0):
+            print("Você não tem mais dicas disponíveis.")
             continue
 
         #dá a resposta se o jogador desiste
@@ -52,7 +60,7 @@ while jogar_dnv == "Sim".lower():
 
         #recebe um chute válido correto
         elif chute == pais:
-            print('\n' + cor.verde + cor.negrito + 'Parabéns, você acertou!' + cor.fim)
+            print('\n' + cor.verde + cor.negrito + 'Parabéns, você acertou em apenas ' + str(21-tentativas) + ' tentativas!' + cor.fim)
             break
 
         #recebe um chute inválido
@@ -73,7 +81,7 @@ while jogar_dnv == "Sim".lower():
         d = round(f.haversine(raio, p1, l1, p2, l2))
 
         #recebe um chute válido errado
-        if chute != pais:
+        elif chute != pais:
             lista_chutes.append(chute)
             print('\n' + cor.vermelho + 'Você errou!\n' + cor.fim)
 
@@ -92,5 +100,12 @@ while jogar_dnv == "Sim".lower():
                 elif i[1] > 0:
                     print(cor.verde + 'pais -> ', i[0], '\ndistancia -> ', str(i[1]) + cor.fim)
             tentativas -= 1
+
+    #finaliza o jogo quando acabam as tentativas
+    print("Acabaram suas tentativas. Você perdeu! O país sorteado era " + pais)
+
     #pergunta se o jogador quer reiniciar o jogo
     jogar_dnv = input("Você quer jogar de novo?")
+
+#finalização quando o jogar não deseja jogar novamente
+print('Obrigado por jogar!')
