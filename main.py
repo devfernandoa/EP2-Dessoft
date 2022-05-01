@@ -20,6 +20,7 @@ while jogar_dnv == "Sim".lower():
 
     #outras variáveis básicas
     tentativas = 20
+    lista_chutes = []
     lista_paises = []
 
     #loop principal
@@ -46,7 +47,8 @@ while jogar_dnv == "Sim".lower():
 
         #mostra a lista de países chutados até o momento
         elif chute == "Chutes".lower():
-            print(lista_paises)
+            print(lista_chutes)
+            continue
 
         #recebe um chute válido correto
         elif chute == pais:
@@ -59,7 +61,7 @@ while jogar_dnv == "Sim".lower():
             continue
 
         #recebe um país que já foi chutado
-        elif chute in lista_paises:
+        elif chute in lista_chutes:
             print('você já chutou esse pais')
             continue
 
@@ -72,6 +74,7 @@ while jogar_dnv == "Sim".lower():
 
         #recebe um chute válido errado
         if chute != pais:
+            lista_chutes.append(chute)
             print('\n' + cor.vermelho + 'Você errou!\n' + cor.fim)
 
             #adiciona a tentativa a lista de tentativas
