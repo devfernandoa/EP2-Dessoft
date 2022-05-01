@@ -38,13 +38,12 @@ while jogar_dnv == "Sim".lower():
         d = round(f.haversine(raio, p1, l1, p2, l2))
 
         #dá uma dica para o jogador
-        if (chute == "Dica".lower()) and (dicas > 0):
-            #adicionar código das dicas
-            continue
-
-        elif (chute == "Dica".lower()) and (dicas <= 0):
-            print("Você não tem mais dicas disponíveis.")
-            continue
+        if (chute == "Dica".lower()):
+            print('Você está no mercado de dicas, onde você pode comprar dicas por tentativas\n 1. Cor da bandeira  - Custa 4 tentativas\n 2. Letra da capital  - Custa 3 tentativas\n 3. Area do pais  - Custa 6 tentativas\n 4. Nome do continente  - Custa 7 tentativa\n 5. População  - Custa 5 tentativas\n')
+            dica = input('Digite o número da dica que você quer comprar: ')
+            if dica == '0':
+            #se o preco for maior do que o numero de tentativas sobrando: print("Você não tem mais dicas disponíveis.")
+                continue
 
         #dá a resposta se o jogador desiste
         elif chute == "Desisto".lower():
