@@ -46,7 +46,7 @@ while jogar_dnv == "Sim".lower():
 
         #mostra a lista de países chutados até o momento
         elif chute == "Chutes".lower():
-            print(lista_chutes)
+            print(lista_paises)
 
         #recebe um chute válido correto
         elif chute == pais:
