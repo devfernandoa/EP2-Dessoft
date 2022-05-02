@@ -23,6 +23,20 @@ while jogar_dnv == "Sim".lower():
     lista_chutes = []
     lista_paises = []
 
+    #variaveis mercado de dicas
+    lista_dicas = {}
+    letras_restritas = []
+    cor_compra = False
+    area_compra = False
+    cont_compra = False
+    pop_compra = False
+    preco = int()
+    capital = base_dados_paises[pais]['capital']
+    area = base_dados_paises[pais]['area']
+    cont = base_dados_paises[pais]['continente']
+    pop = base_dados_paises[pais]['populacao']
+    cor_band = f.cor_bandeira(base_dados_paises[pais]['bandeira'])
+
     #loop principal
     while tentativas > 0:
         print('\n' + cor.preto  + cor.negrito + 'Você tem {} tentativas'.format(tentativas) + cor.fim)
@@ -30,21 +44,75 @@ while jogar_dnv == "Sim".lower():
         #recebe o input do jogador
         chute = input('\n' + cor.preto  + cor.negrito + 'Qual seu chute? ' + cor.fim)
 
-        #declarando latitude e longitude do pais do chute para calcular distância desse país até o país sorteado
-        p2 = base_dados_paises[chute]['geo']['latitude']
-        l2 = base_dados_paises[chute]['geo']['longitude']
-
-        #calculando distância entre os dois paises
-        d = round(f.haversine(raio, p1, l1, p2, l2))
-
         #dá uma dica para o jogador
-        if (chute == "Dica".lower()):
+        if (chute == "dica"):
             print('Você está no mercado de dicas, onde você pode comprar dicas por tentativas\n 1. Cor da bandeira  - Custa 4 tentativas\n 2. Letra da capital  - Custa 3 tentativas\n 3. Area do pais  - Custa 6 tentativas\n 4. Nome do continente  - Custa 7 tentativa\n 5. População  - Custa 5 tentativas\n')
             dica = input('Digite o número da dica que você quer comprar: ')
             if dica == '0':
-            #se o preco for maior do que o numero de tentativas sobrando: print("Você não tem mais dicas disponíveis.")
-                continue
+                print('Você saiu do mercado de dicas')
 
+            #Lógica de comprar a cor da bandeira
+            elif dica == '1':
+                preco = 4
+                if cor_compra or preco >= tentativas:
+                    print('\n' + cor.vermelho + 'Isso não é possível!' + cor.fim + '\n')
+                    continue
+                else:
+                    lista_dicas['cor'] = (('A cor da bandeira é ' + str(cor_band)))
+                    tentativas -= preco
+                    cor_compra = True
+
+            #Lógica de comprar a letra da capital
+            elif dica == '2':
+                preco = 3
+                if len(f.remove_duplicadas(list(capital), len(capital))) == len(letras_restritas) or preco >= tentativas:
+                    print('\n' + cor.vermelho + 'Isso não é possível!' + cor.fim + '\n')
+                    continue
+                else:
+                    letras_restritas.append(f.sorteia_letra(capital, letras_restritas))
+                    tentativas -= preco
+                lista_dicas['letra'] = (('Letras da capital: ' + ', '.join(letras_restritas)))
+            
+            #Lógica de comprar a area do pais
+            elif dica == '3':
+                preco = 6
+                if area_compra or preco >= tentativas:
+                    print('\n' + cor.vermelho + 'Isso não é possível!' + cor.fim + '\n')
+                    continue
+                else:
+                    lista_dicas['area'] = (('A area do país é ' + str(area)))
+                    tentativas -= preco
+                    area_compra = True
+
+            #Lógica de comprar o nome do continente
+            elif dica == '4':
+                preco = 7
+                if cont_compra or preco >= tentativas:
+                    print('\n' + cor.vermelho + 'Isso não é possível!' + cor.fim + '\n')
+                    continue
+                else:
+                    lista_dicas['continente'] = (('O continente do pais é ' + str(cont)))
+                    tentativas -= preco
+                    cont_compra = True
+
+            #Lógica de comprar a população
+            elif dica == '5':
+                preco = 5
+                if pop_compra or preco >= tentativas:
+                    print('\n' + cor.vermelho + 'Isso não é possível!' + cor.fim + '\n')
+                    continue
+                else:
+                    lista_dicas['populacao'] = (('A população do pais é ' + str(pop)))
+                    tentativas -= preco
+                    pop_compra = True
+            else:
+                print('\n' + cor.vermelho + 'Isso não é possível!' + cor.fim + '\n')
+                continue
+            #loop para imprimir as dicas
+            for i in lista_dicas.values():
+                print(i)
+            continue
+            
         #dá a resposta se o jogador desiste
         elif chute == "Desisto".lower():
             print("Você desistiu! O país era " + pais)
@@ -74,9 +142,16 @@ while jogar_dnv == "Sim".lower():
         elif chute in lista_chutes:
             print('você já chutou esse pais')
             continue
+            
+        #declarando latitude e longitude do pais do chute para calcular distância desse país até o país sorteado
+        p2 = base_dados_paises[chute]['geo']['latitude']
+        l2 = base_dados_paises[chute]['geo']['longitude']
+
+        #calculando distância entre os dois paises
+        d = round(f.haversine(raio, p1, l1, p2, l2))
 
         #recebe um chute válido errado
-        elif chute != pais:
+        if chute != pais:
             print('\n' + cor.vermelho + 'Você errou!\n' + cor.fim)
 
             #adiciona a tentativa à lista de tentativas
@@ -101,7 +176,7 @@ while jogar_dnv == "Sim".lower():
     print("Acabaram suas tentativas. Você perdeu! O país sorteado era " + pais)
 
     #pergunta se o jogador quer reiniciar o jogo
-    jogar_dnv = input("Você quer jogar de novo?")
 
+    jogar_dnv = input(cor.negrito + '\n' + "Você quer jogar de novo? (sim ou nao) " + cor.fim + '\n')
 #finalização quando o jogar não deseja jogar novamente
 print('Obrigado por jogar!')

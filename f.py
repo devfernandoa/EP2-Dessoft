@@ -60,3 +60,24 @@ def sorteia_letra(p, lr):
         if s not in lr and s.isalpha():
             break
     return s
+    
+#função que devolve a cor predominante da bandeira
+def cor_bandeira(d):
+    maior = 0
+    for x, y in d.items():
+        if y > maior:
+            maior = y
+            cor = x
+    return cor
+
+#função que remove letras duplicadas de uma palavra
+def remove_duplicadas(str, n):
+    s = set()
+
+    for i in str:
+        s.add(i)
+
+    st = ""
+    for i in s:
+        st = st+i
+    return st
