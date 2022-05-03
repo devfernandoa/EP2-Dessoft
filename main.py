@@ -173,7 +173,8 @@ while jogar_dnv == "Sim".lower():
             continue
 
     #finaliza o jogo quando acabam as tentativas
-    print("Acabaram suas tentativas. Você perdeu! O país sorteado era " + pais)
+    if tentativas == 0:
+        print("Acabaram suas tentativas. Você perdeu! O país sorteado era " + pais)
 
     #pergunta se o jogador quer reiniciar o jogo
 
