@@ -45,11 +45,11 @@ while jogar_dnv == "Sim".lower():
         chute = input('\n' + cor.preto  + cor.negrito + 'Qual seu chute? ' + cor.fim)
 
         #dá uma dica para o jogador
-        if (chute == "dica"):
-            print('Você está no mercado de dicas, onde você pode comprar dicas por tentativas\n 1. Cor da bandeira  - Custa 4 tentativas\n 2. Letra da capital  - Custa 3 tentativas\n 3. Area do pais  - Custa 6 tentativas\n 4. Nome do continente  - Custa 7 tentativa\n 5. População  - Custa 5 tentativas\n')
+        if (chute == "Dica".lower()):
+            print('Você está no mercado de dicas, onde você pode comprar dicas por tentativas\n 1. Cor da bandeira  - Custa 4 tentativas\n 2. Letra da capital  - Custa 3 tentativas\n 3. Area do pais  - Custa 6 tentativas\n 4. Nome do continente  - Custa 7 tentativa\n 5. População  - Custa 5 tentativas\n Se quiser sair do mercado de dicas, digite 0.\n')
             dica = input('Digite o número da dica que você quer comprar: ')
             if dica == '0':
-                print('Você saiu do mercado de dicas')
+                print('Você saiu do mercado de dicas.')
 
             #Lógica de comprar a cor da bandeira
             elif dica == '1':
