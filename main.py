@@ -115,8 +115,12 @@ while jogar_dnv == "Sim".lower():
             
         #dá a resposta se o jogador desiste
         elif chute == "desisto":
-            print("Você desistiu! O país era " + pais)
-            break
+            certeza = input('\n' + cor.preto  + cor.negrito + 'Você tem certeza que deseja desistir? (sim/não) ' + cor.fim).lower()
+            if certeza == 'sim':
+                print("Você desistiu! O país era " + pais)
+                break
+            else:
+                continue
 
         #mostra os comandos
         elif chute == "comandos":
@@ -159,7 +163,7 @@ while jogar_dnv == "Sim".lower():
             lista_chutes.append(chute)
 
             #mostra a lista de paises e distâncias
-            print('Distâncias entre os chutes e o país sorteado: ')
+            print(cor.negrito + 'Distâncias entre os chutes e o país sorteado: ' + cor.fim)
             for i in lista_paises:
                 if i[1] > 10000:
                     print(cor.roxo + 'pais -> ', i[0], '\ndistancia -> ', str(i[1]) + cor.fim)
@@ -174,10 +178,10 @@ while jogar_dnv == "Sim".lower():
 
     #finaliza o jogo quando acabam as tentativas
     if tentativas == 0:
-        print("Acabaram suas tentativas. Você perdeu! O país sorteado era " + pais)
+        print( cor.negrito + cor.vermelho + "\nAcabaram suas tentativas. Você perdeu! O país sorteado era " + pais + cor.fim)
 
     #pergunta se o jogador quer reiniciar o jogo
 
-    jogar_dnv = input(cor.negrito + '\n' + "Você quer jogar de novo? (sim ou nao) " + cor.fim + '\n')
+    jogar_dnv = input(cor.negrito + '\n' + "Você quer jogar de novo? (sim ou nao): " + cor.fim)
 #finalização quando o jogar não deseja jogar novamente
 print('Obrigado por jogar!')
