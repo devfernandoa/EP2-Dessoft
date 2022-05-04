@@ -42,6 +42,8 @@ def adiciona_em_ordem(nome, distancia, lista):
             elif distancia < lista[i][1]:
                 lista.insert(i, [nome, distancia])
                 return lista
+        lista.append([nome, distancia])
+        return lista
 
 #função que vereifica se esta dado pais esta na lista
 def esta_na_lista(p, l):
