@@ -166,13 +166,13 @@ while jogar_dnv == "Sim".lower():
             print(cor.negrito + 'Distâncias entre os chutes e o país sorteado: ' + cor.fim)
             for i in lista_paises:
                 if i[1] > 10000:
-                    print(cor.roxo + 'País -> ', i[0], '\nDistância -> ', str(i[1]) + cor.fim)
+                    print(cor.roxo + 'País -> ', i[0], '\nDistância -> ', str(i[1]) + 'km' + cor.fim)
                 elif i[1] > 5000:
-                    print(cor.vermelho + 'País -> ', i[0], '\nDistância -> ', str(i[1]) + cor.fim)
+                    print(cor.vermelho + 'País -> ', i[0], '\nDistância -> ', str(i[1]) + 'km' + cor.fim)
                 elif i[1] > 1000:
-                    print(cor.amarelo + 'País -> ', i[0], '\nDistância -> ', str(i[1]) + cor.fim)
+                    print(cor.amarelo + 'País -> ', i[0], '\nDistância -> ', str(i[1]) + 'km' + cor.fim)
                 elif i[1] > 0:
-                    print(cor.verde + 'País -> ', i[0], '\nDistância -> ', str(i[1]) + cor.fim)
+                    print(cor.verde + 'País -> ', i[0], '\nDistância -> ', str(i[1]) + 'km' + cor.fim)
             tentativas -= 1
             continue
 
