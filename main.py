@@ -9,7 +9,7 @@ while jogar_dnv == "Sim".lower():
 
     #print da introdução
     print('Bem vindo ao Insper Paises, o projeto 2 de Design de Software feito por Fernando Alzueta e Ilana Chaia Finger\nAqui seu objetivo é acertar um país sorteado pelo computador, você terá 20 chances para acertar\nA cada tentativa você pode comprar dicas, chutar um país ou desistir\nSe você chutar um país, ele será adicionado em uma lista que possui a distancia entre a capital do pais sorteado e do chute\n')
-    print('Comandos: \ndica - entra no mercado de dicas se você ainda tiver dicas disponíveis\ndesisto - sai do programa\ncomandos - exibe os comandos\nchutes - exibe a lista de paises chutados')
+    print(cor.negrito + 'Comandos:' + cor.fim + '\ndica - entra no mercado de dicas se você ainda tiver dicas disponíveis\ndesisto - sai do programa\ncomandos - exibe os comandos\nchutes - exibe a lista de paises chutados')
 
     pais = f.sorteia_pais(base_dados_paises)
 
