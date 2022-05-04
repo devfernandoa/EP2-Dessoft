@@ -42,10 +42,10 @@ while jogar_dnv == "Sim".lower():
         print('\n' + cor.preto  + cor.negrito + 'Você tem {} tentativas'.format(tentativas) + cor.fim)
 
         #recebe o input do jogador
-        chute = input('\n' + cor.preto  + cor.negrito + 'Qual seu chute? ' + cor.fim)
+        chute = input('\n' + cor.preto  + cor.negrito + 'Qual seu chute? ' + cor.fim).lower()
 
         #dá uma dica para o jogador
-        if (chute == "Dica".lower()):
+        if (chute == "dica"):
             print('Você está no mercado de dicas, onde você pode comprar dicas por tentativas\n 1. Cor da bandeira  - Custa 4 tentativas\n 2. Letra da capital  - Custa 3 tentativas\n 3. Area do pais  - Custa 6 tentativas\n 4. Nome do continente  - Custa 7 tentativa\n 5. População  - Custa 5 tentativas\n Se quiser sair do mercado de dicas, digite 0.\n')
             dica = input('Digite o número da dica que você quer comprar: ')
             if dica == '0':
@@ -114,17 +114,17 @@ while jogar_dnv == "Sim".lower():
             continue
             
         #dá a resposta se o jogador desiste
-        elif chute == "Desisto".lower():
+        elif chute == "desisto":
             print("Você desistiu! O país era " + pais)
             break
 
         #mostra os comandos
-        elif chute == "Comandos".lower():
+        elif chute == "comandos":
             print('Comandos: \ndica - entra no mercado de dicas se você ainda tiver dicas disponíveis\ndesisto - sai do programa\ncomandos - exibe os comandos\nchutes - exibe a lista de paises chutados')
             continue
 
         #mostra a lista de países chutados até o momento
-        elif chute == "Chutes".lower():
+        elif chute == "chutes":
             print(lista_chutes)
             continue
 
@@ -135,12 +135,12 @@ while jogar_dnv == "Sim".lower():
 
         #recebe um chute inválido
         elif chute not in base_dados_paises.keys():
-            print('chute inválido')
+            print('\n' + cor.vermelho + 'Isso não é possível!' + cor.fim)
             continue
 
         #recebe um país que já foi chutado
         elif chute in lista_chutes:
-            print('você já chutou esse pais')
+            print(cor.vermelho + '\n Você já chutou esse pais' + cor.fim)
             continue
             
         #declarando latitude e longitude do pais do chute para calcular distância desse país até o país sorteado
