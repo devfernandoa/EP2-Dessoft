@@ -139,7 +139,7 @@ while jogar_dnv == "Sim".lower():
 
         #recebe um chute inválido
         elif chute not in base_dados_paises.keys():
-            print('\n' + cor.vermelho + 'Isso não é possível!' + cor.fim)
+            print('\n' + cor.vermelho + 'Esse chute não é válido' + cor.fim)
             continue
 
         #recebe um país que já foi chutado
