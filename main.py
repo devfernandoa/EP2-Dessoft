@@ -8,8 +8,8 @@ jogar_dnv = "sim"
 while jogar_dnv == "Sim".lower():
 
     #print da introdução
-    print('Bem vindo ao Insper Paises, o projeto 2 de Design de Software feito por Fernando Alzueta e Ilana Chaia Finger\nAqui seu objetivo é acertar um país sorteado pelo computador, você terá 20 chances para acertar\nA cada tentativa você pode comprar dicas, chutar um país ou desistir\nSe você chutar um país, ele será adicionado em uma lista que possui a distancia entre a capital do pais sorteado e do chute\n')
-    print(cor.negrito + 'Comandos:' + cor.fim + '\ndica - entra no mercado de dicas se você ainda tiver dicas disponíveis\ndesisto - sai do programa\ncomandos - exibe os comandos\nchutes - exibe a lista de paises chutados')
+    print('\nBem vindo ao Insper Paises, o projeto 2 de Design de Software feito por Fernando Alzueta e Ilana Chaia Finger\nAqui seu objetivo é acertar um país sorteado pelo computador, você terá 20 chances para acertar\nA cada tentativa você pode comprar dicas, chutar um país ou desistir\nSe você chutar um país, ele será adicionado em uma lista que possui a distancia entre a capital do pais sorteado e do chute\n')
+    print(cor.negrito + cor.amarelo + 'Comandos:' + cor.fim + '\ndica - entra no mercado de dicas se você ainda tiver dicas disponíveis\ndesisto - sai do programa\ncomandos - exibe os comandos\nchutes - exibe a lista de paises chutados')
 
     pais = f.sorteia_pais(base_dados_paises)
 
@@ -117,7 +117,7 @@ while jogar_dnv == "Sim".lower():
         elif chute == "desisto":
             certeza = input('\n' + cor.preto  + cor.negrito + 'Você tem certeza que deseja desistir? (sim/não) ' + cor.fim).lower()
             if certeza == 'sim':
-                print("Você desistiu! O país era " + pais)
+                print("Você desistiu! O país era " + cor.verde + pais + cor.fim)
                 break
             else:
                 continue
@@ -166,13 +166,13 @@ while jogar_dnv == "Sim".lower():
             print(cor.negrito + 'Distâncias entre os chutes e o país sorteado: ' + cor.fim)
             for i in lista_paises:
                 if i[1] > 10000:
-                    print(cor.roxo + 'pais -> ', i[0], '\ndistancia -> ', str(i[1]) + cor.fim)
+                    print(cor.roxo + 'País -> ', i[0], '\nDistância -> ', str(i[1]) + cor.fim)
                 elif i[1] > 5000:
-                    print(cor.vermelho + 'pais -> ', i[0], '\ndistancia -> ', str(i[1]) + cor.fim)
+                    print(cor.vermelho + 'País -> ', i[0], '\nDistância -> ', str(i[1]) + cor.fim)
                 elif i[1] > 1000:
-                    print(cor.amarelo + 'pais -> ', i[0], '\ndistancia -> ', str(i[1]) + cor.fim)
+                    print(cor.amarelo + 'País -> ', i[0], '\nDistância -> ', str(i[1]) + cor.fim)
                 elif i[1] > 0:
-                    print(cor.verde + 'pais -> ', i[0], '\ndistancia -> ', str(i[1]) + cor.fim)
+                    print(cor.verde + 'País -> ', i[0], '\nDistância -> ', str(i[1]) + cor.fim)
             tentativas -= 1
             continue
 
