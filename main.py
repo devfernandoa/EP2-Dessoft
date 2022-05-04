@@ -184,4 +184,4 @@ while jogar_dnv == "Sim".lower():
 
     jogar_dnv = input(cor.negrito + '\n' + "Você quer jogar de novo? (sim ou nao): " + cor.fim)
 #finalização quando o jogar não deseja jogar novamente
-print('Obrigado por jogar!')
+print(cor.negrito + '\n' + cor.roxo + 'Obrigado por jogar!' + cor.fim)
